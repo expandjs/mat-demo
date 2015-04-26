@@ -80,10 +80,6 @@ This element is used to wrap a material demo.
                 top: 8px;
             }
 
-            :host(:not([embedded])) #matDemoToggle {
-                z-index: 10;
-            }
-
             polyfill-next-selector { content: '[mobile]:not([device="tablet"]) :host([embedded]) #matDemoToggle' }
             :host-context([mobile]:not([device="tablet"])):host([embedded]) #matDemoToggle {
                 top: 4px;
