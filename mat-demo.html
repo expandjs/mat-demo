@@ -91,7 +91,7 @@ This element is used to wrap a material demo.
         <template context="{{}}" is="xp-embedded-state" id="xpEmbeddedState" embedded="{{embedded}}"></template>
         <mat-shell id="matDemoShell" theme="{{dark ? 'dark' : 'light'}}">
             <mat-header-panel id="matDemoWrapper" mode="fixed">
-                <mat-header id="matDemoHeader" background="indigo">
+                <mat-header id="matDemoHeader" background="{{embedded ? '' : 'indigo'}}">
                     <div id="matDemoLabel" flex>Demo &gt; {{label}}</div>
                     <mat-icon-button id="matDemoToggle" active="{{dark}}" activeIcon="image:brightness-3" color="{{embedded ? '' : 'white'}}" icon="image:brightness-5" toggleable></mat-icon-button>
                 </mat-header>
