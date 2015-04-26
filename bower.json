@@ -1,7 +1,7 @@
 {
   "name": "mat-demo",
   "license": "BSD-3-Clause",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "This element is used to wrap a material demo.",
   "homepage": "http://www.expandjs.com/elements/mat-demo",
   "authors": [
