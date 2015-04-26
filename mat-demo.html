@@ -60,28 +60,25 @@ This element is used to wrap a material demo.
                 text-align: center;
             }
 
+            :host([embedded]) #matDemoHeader::shadow #matHeaderWrapper {
+                background: transparent !important;
+                height: 0 !important;
+            }
+
             :host #matDemoLabel {
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
 
-            :host #matDemoToggle {
+            :host([embedded]) #matDemoToggle {
                 position: absolute;
                 right: 12px;
-                top: -56px;
-            }
-
-            :host-context([mobile]:not([device="tablet"])) #matDemoToggle {
-                right: 4px;
-                top: -52px;
-            }
-
-            :host([embedded]) #matDemoToggle {
                 top: 8px;
             }
 
             polyfill-next-selector { content: '[mobile]:not([device="tablet"]) :host([embedded]) #matDemoToggle' }
             :host-context([mobile]:not([device="tablet"])):host([embedded]) #matDemoToggle {
+                right: 4px;
                 top: 4px;
             }
 
@@ -94,8 +91,10 @@ This element is used to wrap a material demo.
         <template context="{{}}" is="xp-embedded-state" id="xpEmbeddedState" embedded="{{embedded}}"></template>
         <mat-shell id="matDemoShell" theme="{{dark ? 'dark' : 'light'}}">
             <mat-header-panel id="matDemoWrapper" mode="fixed">
-                <mat-header id="matDemoHeader" background="indigo" hidden?="{{embedded}}"><div id="matDemoLabel">Demo &gt; {{label}}</div></mat-header>
-                <mat-icon-button id="matDemoToggle" active="{{dark}}" activeIcon="image:brightness-3" color="{{embedded ? '' : 'white'}}" icon="image:brightness-5" toggleable></mat-icon-button>
+                <mat-header id="matDemoHeader" background="indigo">
+                    <div id="matDemoLabel" flex>Demo &gt; {{label}}</div>
+                    <mat-icon-button id="matDemoToggle" active="{{dark}}" activeIcon="image:brightness-3" color="{{embedded ? '' : 'white'}}" icon="image:brightness-5" toggleable></mat-icon-button>
+                </mat-header>
                 <div id="matDemoBody"><content id="content"></content></div>
             </mat-header-panel>
         </mat-shell>
