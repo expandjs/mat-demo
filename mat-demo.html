@@ -60,7 +60,8 @@ This element is used to wrap a material demo.
                 text-align: center;
             }
 
-            :host([embedded]) #matDemoHeader {
+            :host([embedded]) #matDemoHeader,
+            :host([embedded]) #matDemoHeader::shadow > #matHeaderWrapper {
                 max-height: 0 !important;
                 min-height: 0 !important;
             }
