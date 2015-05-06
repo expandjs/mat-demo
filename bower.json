@@ -25,9 +25,9 @@
   ],
   "dependencies": {
     "expandjs": "ExpandJS/expandjs",
-    "mat-header-panel": "ExpandJS/mat-header-panel",
+    "mat-content": "ExpandJS/mat-content",
+    "mat-icon-button": "ExpandJS/mat-icon-button",
     "mat-shell": "ExpandJS/mat-shell",
-    "xp-embedded-state": "ExpandJS/xp-embedded-state",
     "polymer": "Polymer/polymer#^0.5"
   }
 }

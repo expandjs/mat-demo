@@ -15,19 +15,18 @@ This element is used to wrap a material demo.
 
 @dependency polymer Polymer/polymer#^0.5
 @dependency expandjs ExpandJS/expandjs
-@dependency mat-header-panel ExpandJS/mat-header-panel
+@dependency mat-content ExpandJS/mat-content
+@dependency mat-icon-button ExpandJS/mat-icon-button
 @dependency mat-shell ExpandJS/mat-shell
-@dependency xp-embedded-state ExpandJS/xp-embedded-state
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
-<link rel="import" href="../mat-header-panel/mat-header-panel.html">
-<link rel="import" href="../mat-header-panel/mat-header.html">
+<link rel="import" href="../mat-content/mat-content.html">
+<link rel="import" href="../mat-icon-button/mat-icon-button.html">
 <link rel="import" href="../mat-shell/mat-shell.html">
-<link rel="import" href="../xp-embedded-state/xp-embedded-state.html">
 
-<polymer-element name="mat-demo" constructor="MATDemoElement" attributes="embedded label theme">
+<polymer-element name="mat-demo" constructor="MATDemoElement" attributes="dark">
 
     <template>
         <style>
@@ -56,48 +55,28 @@ This element is used to wrap a material demo.
                 white-space: nowrap;
             }
 
-            :host #matDemoWrapper {
+            :host #matDemoWrapper,
+            :host #matDemoBody {
+                min-height: 100%;
                 text-align: center;
             }
 
-            :host([embedded]) #matDemoHeader,
-            :host([embedded]) #matDemoHeader::shadow > #matHeaderWrapper {
-                max-height: 0 !important;
-                min-height: 0 !important;
-            }
-
-            :host #matDemoLabel {
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
-            :host([embedded]) #matDemoToggle {
+            :host #matDemoToggle {
                 position: absolute;
                 right: 12px;
                 top: 8px;
             }
 
-            polyfill-next-selector { content: '[mobile]:not([device="tablet"]) :host([embedded]) #matDemoToggle' }
-            :host-context([mobile]:not([device="tablet"])):host([embedded]) #matDemoToggle {
+            :host-context([mobile]:not([device="tablet"])) #matDemoToggle {
                 right: 4px;
                 top: 4px;
             }
-
-            :host #matDemoBody {
-                box-sizing: border-box;
-                min-height: 100%;
-                padding: 32px 16px;
-            }
         </style>
-        <template context="{{}}" is="xp-embedded-state" id="xpEmbeddedState" embedded="{{embedded}}"></template>
-        <mat-shell id="matDemoShell" theme="{{dark ? 'dark' : 'light'}}">
-            <mat-header-panel id="matDemoWrapper" mode="fixed">
-                <mat-header id="matDemoHeader" background="{{embedded ? '' : 'indigo'}}">
-                    <div id="matDemoLabel" flex>Demo &gt; {{label}}</div>
-                    <mat-icon-button id="matDemoToggle" active="{{dark}}" activeIcon="image:brightness-3" color="{{embedded ? '' : 'white'}}" icon="image:brightness-5" toggleable></mat-icon-button>
-                </mat-header>
-                <div id="matDemoBody"><content id="content"></content></div>
-            </mat-header-panel>
+        <mat-shell id="matDemoWrapper" theme="{{dark ? 'dark' : 'light'}}">
+            <mat-content id="matDemoBody">
+                <content id="content"></content>
+                <mat-icon-button id="matDemoToggle" active="{{dark}}" activeIcon="image:brightness-3" icon="image:brightness-5" toggleable></mat-icon-button>
+            </mat-content>
         </mat-shell>
     </template>
 
@@ -114,26 +93,7 @@ This element is used to wrap a material demo.
                  * @type boolean
                  * @default false
                  */
-                dark: {reflect: false, value: false},
-
-                /**
-                 * If set to true, the demo is embedded into an iframe.
-                 *
-                 * @attribute embedded
-                 * @type boolean
-                 * @default false
-                 * @readonly
-                 */
-                embedded: {reflect: true, value: false},
-
-                /**
-                 * The demo's label.
-                 *
-                 * @attribute label
-                 * @type string
-                 * @default ''
-                 */
-                label: {reflect: true, value: ''}
+                dark: {reflect: false, value: false}
             }
         });
     </script>
