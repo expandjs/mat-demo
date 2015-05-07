@@ -17,16 +17,16 @@ This element is used to wrap a material demo.
 @dependency expandjs ExpandJS/expandjs
 @dependency mat-content ExpandJS/mat-content
 @dependency mat-icon-button ExpandJS/mat-icon-button
-@dependency mat-shell ExpandJS/mat-shell
+@dependency mat-paper ExpandJS/mat-paper
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
 <link rel="import" href="../mat-content/mat-content.html">
 <link rel="import" href="../mat-icon-button/mat-icon-button.html">
-<link rel="import" href="../mat-shell/mat-shell.html">
+<link rel="import" href="../mat-paper/mat-paper.html">
 
-<polymer-element name="mat-demo" constructor="MATDemoElement" attributes="dark">
+<polymer-element name="mat-demo" constructor="MATDemoElement" attributes="theme">
 
     <template>
         <style>
@@ -72,28 +72,42 @@ This element is used to wrap a material demo.
                 top: 4px;
             }
         </style>
-        <mat-shell id="matDemoWrapper" theme="{{dark ? 'dark' : 'light'}}">
+        <mat-paper id="matDemoWrapper" brightness="shell" theme="{{theme}}">
             <mat-content id="matDemoBody">
                 <content id="content"></content>
-                <mat-icon-button id="matDemoToggle" active="{{dark}}" activeIcon="image:brightness-3" icon="image:brightness-5" toggleable></mat-icon-button>
+                <mat-icon-button id="matDemoToggle" active="{{theme === 'dark'}}" activeIcon="image:brightness-3" icon="image:brightness-5" on-xp-activate="{{inverse}}"></mat-icon-button>
             </mat-content>
-        </mat-shell>
+        </mat-paper>
     </template>
 
     <script>
         XPElement({
 
+            /**
+             * Inverses the theme.
+             *
+             * @method inverse
+             * @return {Element}
+             */
+            inverse: function () {
+                var self = this;
+                self.theme = self.$.matDemoWrapper.foreground;
+                return self;
+            },
+
+            /*********************************************************************/
+
             // PUBLISH
             publish: {
 
                 /**
-                 * If set to true, the theme is dark.
+                 * The paper's theme, used to apply the default foreground color.
                  *
-                 * @attribute dark
-                 * @type boolean
-                 * @default false
+                 * @attribute theme
+                 * @type "dark" | "light"
+                 * @default "light"
                  */
-                dark: {reflect: false, value: false}
+                theme: {reflect: true, value: 'light'}
             }
         });
     </script>

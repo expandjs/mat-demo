@@ -27,7 +27,7 @@
     "expandjs": "ExpandJS/expandjs",
     "mat-content": "ExpandJS/mat-content",
     "mat-icon-button": "ExpandJS/mat-icon-button",
-    "mat-shell": "ExpandJS/mat-shell",
+    "mat-paper": "ExpandJS/mat-paper",
     "polymer": "Polymer/polymer#^0.5"
   }
 }
