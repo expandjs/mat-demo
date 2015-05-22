@@ -1,7 +1,7 @@
 {
   "name": "mat-demo",
   "license": "BSD-3-Clause",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "description": "A custom element used to display a Material Design demo page",
   "homepage": "http://expandjs.com/elements/mat-demo",
   "authors": [
