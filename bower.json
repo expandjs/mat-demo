@@ -24,10 +24,10 @@
     "**/.*"
   ],
   "dependencies": {
-    "expandjs": "ExpandJS/expandjs",
-    "mat-content": "ExpandJS/mat-content",
-    "mat-icon-button": "ExpandJS/mat-icon-button",
-    "mat-paper": "ExpandJS/mat-paper",
+    "expandjs": "ExpandJS/expandjs#alpha",
+    "mat-content": "ExpandJS/mat-content#alpha",
+    "mat-icon-button": "ExpandJS/mat-icon-button#alpha",
+    "mat-paper": "ExpandJS/mat-paper#alpha",
     "polymer": "Polymer/polymer#^0.5"
   }
 }
