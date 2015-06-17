@@ -1,0 +1,35 @@
+{
+  "name": "mat-demo",
+  "license": "BSD-3-Clause",
+  "version": "0.9.0",
+  "description": "A custom element used to display a Material Design demo page",
+  "homepage": "http://expandjs.com/elements/mat-demo",
+  "authors": [
+    "Giuliano Rullo <g.rullo@expandjs.com>",
+    "Maurizio Stefàno <m.stefano@expandjs.com>",
+    "Robert Manolea <r.manolea@expandjs.com>"
+  ],
+  "keywords": [
+    "material design",
+    "material demo",
+    "web app",
+    "html5",
+    "expandjs",
+    "web-components"
+  ],
+  "main": [
+    "mat-demo.html"
+  ],
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "expandjs": "ExpandJS/expandjs",
+    "mat-content": "ExpandJS/mat-content",
+    "mat-icon-button": "ExpandJS/mat-icon-button",
+    "mat-icons": "ExpandJS/mat-icons",
+    "mat-paper": "ExpandJS/mat-paper",
+    "polymer": "Polymer/polymer",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout"
+  }
+}
