@@ -15,13 +15,13 @@ This element is used to wrap a material demo.
 @group containers
 @homepage http://expandjs.com/elements/mat-demo
 
-@dependency polymer Polymer/polymer
-@dependency expandjs ExpandJS/expandjs
-@dependency iron-flex-layout PolymerElements/iron-flex-layout
-@dependency mat-content ExpandJS/mat-content
-@dependency mat-icon-button ExpandJS/mat-icon-button
-@dependency mat-icons ExpandJS/mat-icons
-@dependency mat-paper ExpandJS/mat-paper
+@dependency polymer Polymer/polymer#^1.0.4
+@dependency expandjs ExpandJS/expandjs#0.9.1
+@dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.2
+@dependency mat-content ExpandJS/mat-content#0.9.1
+@dependency mat-icon-button ExpandJS/mat-icon-button#0.9.1
+@dependency mat-icons ExpandJS/mat-icons#0.9.1
+@dependency mat-paper ExpandJS/mat-paper#0.9.1
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -73,7 +73,7 @@ This element is used to wrap a material demo.
         <mat-paper id="matDemoWrapper" brightness="shell" theme="{{theme}}">
             <mat-content id="matDemoBody">
                 <content id="content"></content>
-                <mat-icon-button id="matDemoToggle" active="[[_computeActive(theme)]]" activeIcon="image:brightness-3" icon="image:brightness-5" on-xp-activate="inverse"></mat-icon-button>
+                <mat-icon-button id="matDemoToggle" active="[[_computeActive(theme)]]" active-icon="image:brightness-3" icon="image:brightness-5" on-xp-activate="inverse"></mat-icon-button>
             </mat-content>
         </mat-paper>
     </template>

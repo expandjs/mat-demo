@@ -1,7 +1,7 @@
 {
   "name": "mat-demo",
   "license": "BSD-3-Clause",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A custom element used to display a Material Design demo page",
   "homepage": "http://expandjs.com/elements/mat-demo",
   "authors": [
@@ -24,12 +24,12 @@
     "**/.*"
   ],
   "dependencies": {
-    "expandjs": "ExpandJS/expandjs",
-    "mat-content": "ExpandJS/mat-content",
-    "mat-icon-button": "ExpandJS/mat-icon-button",
-    "mat-icons": "ExpandJS/mat-icons",
-    "mat-paper": "ExpandJS/mat-paper",
-    "polymer": "Polymer/polymer",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout"
+    "expandjs": "ExpandJS/expandjs#0.9.1",
+    "mat-content": "ExpandJS/mat-content#0.9.1",
+    "mat-icon-button": "ExpandJS/mat-icon-button#0.9.1",
+    "mat-icons": "ExpandJS/mat-icons#0.9.1",
+    "mat-paper": "ExpandJS/mat-paper#0.9.1",
+    "polymer": "Polymer/polymer#^1.0.4",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.2"
   }
 }
