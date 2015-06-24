@@ -29,7 +29,7 @@
     "mat-icon-button": "ExpandJS/mat-icon-button#0.9.1",
     "mat-icons": "ExpandJS/mat-icons#0.9.1",
     "mat-paper": "ExpandJS/mat-paper#0.9.1",
-    "polymer": "Polymer/polymer#^1.0.4",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.2"
+    "polymer": "Polymer/polymer#^1.0.0",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.0"
   }
 }
