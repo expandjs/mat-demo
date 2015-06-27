@@ -16,12 +16,12 @@ This element is used to wrap a material demo.
 @homepage http://expandjs.com/elements/mat-demo
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.1
+@dependency expandjs ExpandJS/expandjs#0.9.2
 @dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-content ExpandJS/mat-content#0.9.1
-@dependency mat-icon-button ExpandJS/mat-icon-button#0.9.1
-@dependency mat-icons ExpandJS/mat-icons#0.9.1
-@dependency mat-paper ExpandJS/mat-paper#0.9.1
+@dependency mat-content ExpandJS/mat-content#0.9.2
+@dependency mat-icon-button ExpandJS/mat-icon-button#0.9.2
+@dependency mat-icons ExpandJS/mat-icons#0.9.2
+@dependency mat-paper ExpandJS/mat-paper#0.9.2
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -30,52 +30,64 @@ This element is used to wrap a material demo.
 <link rel="import" href="../mat-content/mat-content.html">
 <link rel="import" href="../mat-icon-button/mat-icon-button.html">
 <link rel="import" href="../mat-icons/image-icons.html">
-<link rel="import" href="../mat-paper/mat-paper.html">
+<link rel="import" href="../mat-panel/mat-panel.html">
+<link rel="import" href="../mat-tooltip/mat-tooltip.html">
 
 <dom-module id="mat-demo">
 
     <style>
         :host {
-            @apply(--layout-fit);
             display: block;
-            overflow: auto;
-            text-align: center;
+            margin: 16px;
+            max-width: 720px;
+            overflow: visible;
         }
 
-        :host ::content .demo-title {
-            @apply(--mat-font-title);
+        :host #matDemoLabel {
+            @apply(--layout-flex);
+            padding-left: 12px;
+        }
+
+        :host #matDemoCode::shadow pre {
             margin: 0;
-            padding: 32px 0 16px 0;
         }
 
-        :host #matDemoWrapper {
-            min-height: 100%;
+        :host #matDemoBody {
+            position: relative;
         }
 
-        :host #matDemoToggle {
-            position: absolute;
-            right: 4px;
-            top: 4px;
+        :host([padding-disabled]) #matDemoBody {
+            padding: 0;
         }
 
         /* TABLET */
 
         @media (min-width: 960px) {
 
-            :host #matDemoToggle {
-                right: 12px;
-                top: 8px;
+            :host {
+                margin: 24px;
             }
         }
     </style>
 
     <template>
-        <mat-paper id="matDemoWrapper" brightness="shell" theme="{{theme}}">
+        <mat-panel id="matDemoPanel" raised theme="{{theme}}">
+            <mat-toolbar id="matDemoHeader" background="[[toolbarColor]]">
+                <div id="matDemoLabel">{{label}}</div>
+                <mat-tooltip id="matDemoCodeTooltip" tip="Toggle source">
+                    <mat-icon-button id="matDemoCodeToggle" icon="action:code" on-xp-activate="toggleCode"></mat-icon-button>
+                </mat-tooltip>
+                <mat-tooltip id="matDemoThemeTooltip" tip="Switch theme">
+                    <mat-icon-button id="matDemoThemeToggle" active="[[_computeActive(theme)]]" active-icon="image:brightness-3" icon="image:brightness-5" on-xp-activate="toggleTheme"></mat-icon-button>
+                </mat-tooltip>
+            </mat-toolbar>
+            <xp-collapse id="matDemoCodeCollapse" collapsed>
+                <xp-markdown id="matDemoCode" code="[[code]]"></xp-markdown>
+            </xp-collapse>
             <mat-content id="matDemoBody">
                 <content id="content"></content>
-                <mat-icon-button id="matDemoToggle" active="[[_computeActive(theme)]]" active-icon="image:brightness-3" icon="image:brightness-5" on-xp-activate="inverse"></mat-icon-button>
             </mat-content>
-        </mat-paper>
+        </mat-panel>
     </template>
 
     <script>
@@ -87,14 +99,26 @@ This element is used to wrap a material demo.
             /*********************************************************************/
 
             /**
-             * Inverses the theme.
+             * Toggles the code.
              *
-             * @method inverse
+             * @method toggleCode
              * @return {Element}
              */
-            inverse: function () {
+            toggleCode: function () {
                 var self = this;
-                self.theme = self.$.matDemoWrapper.foreground;
+                self.$.matDemoCodeCollapse.toggle();
+                return self;
+            },
+
+            /**
+             * Toggles the theme.
+             *
+             * @method toggleTheme
+             * @return {Element}
+             */
+            toggleTheme: function () {
+                var self = this;
+                self.theme = self.$.matDemoPanel.$.matPanelWrapper.foreground;
                 return self;
             },
 
@@ -104,18 +128,68 @@ This element is used to wrap a material demo.
             properties: {
 
                 /**
+                 * The demo's code.
+                 *
+                 * @attribute code
+                 * @type string
+                 * @notifies
+                 * @readonly
+                 */
+                code: {
+                    notify: true,
+                    readOnly: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * The demo's label.
+                 *
+                 * @attribute label
+                 * @type string
+                 */
+                label: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
+                 * If set to true, the content's padding is disabled.
+                 *
+                 * @attribute padding-disabled
+                 * @type boolean
+                 * @default false
+                 */
+                paddingDisabled: {
+                    reflectToAttribute: true,
+                    type: Boolean,
+                    value: false
+                },
+
+                /**
                  * The paper's theme, used to apply the default foreground color.
                  *
                  * @attribute theme
-                 * @type "dark" | "light"
-                 * @default "light"
+                 * @type String
                  * @notifies
                  */
                 theme: {
                     notify: true,
+                    type: String
+                },
+
+                /**
+                 * The toolbar's background color.
+                 *
+                 * @attribute toolbar-color
+                 * @type string
+                 * @default "indigo"
+                 */
+                toolbarColor: {
                     reflectToAttribute: true,
                     type: String,
-                    value: 'light'
+                    value: 'indigo'
                 }
             },
 
@@ -124,6 +198,26 @@ This element is used to wrap a material demo.
             // COMPUTER
             _computeActive: function (theme) {
                 return theme === 'dark';
+            },
+
+            /*********************************************************************/
+
+            // LISTENER
+            ready: function () {
+
+                // Vars
+                var self   = this,
+                    script = XP.getDistributedElement(Polymer.dom(self.$.content), 'script[type="text/html"]'),
+                    lines  = script ? script.innerHTML.split('\n') : [],
+                    first  = lines.shift(),
+                    last   = lines.pop(),
+                    spaces = XP.match(lines[0] || '', /^[ ]+/)[0] || '';
+
+                // Cleaning
+                lines.forEach(function (line, i) { lines[i] = line.replace(spaces, ''); });
+
+                // Setting
+                self._setCode('```html\n' + lines.join('\n') + '\n```');
             }
         });
     </script>
