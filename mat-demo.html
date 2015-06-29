@@ -31,7 +31,6 @@ This element is used to wrap a material demo.
 <link rel="import" href="../mat-icon-button/mat-icon-button.html">
 <link rel="import" href="../mat-icons/image-icons.html">
 <link rel="import" href="../mat-panel/mat-panel.html">
-<link rel="import" href="../mat-tooltip/mat-tooltip.html">
 
 <dom-module id="mat-demo">
 
@@ -74,12 +73,8 @@ This element is used to wrap a material demo.
         <mat-panel id="matDemoPanel" raised theme="{{theme}}">
             <mat-toolbar id="matDemoHeader" background="[[toolbarColor]]">
                 <div id="matDemoLabel">{{label}}</div>
-                <mat-tooltip id="matDemoCodeTooltip" tip="Toggle source">
-                    <mat-icon-button id="matDemoCodeToggle" icon="action:code" on-xp-activate="toggleCode"></mat-icon-button>
-                </mat-tooltip>
-                <mat-tooltip id="matDemoThemeTooltip" tip="Switch theme">
-                    <mat-icon-button id="matDemoThemeToggle" active="[[_computeActive(theme)]]" active-icon="image:brightness-3" icon="image:brightness-5" on-xp-activate="toggleTheme"></mat-icon-button>
-                </mat-tooltip>
+                <mat-icon-button id="matDemoCodeToggle" icon="action:code" on-xp-activate="toggleCode"></mat-icon-button>
+                <mat-icon-button id="matDemoThemeToggle" active="[[_computeActive(theme)]]" active-icon="image:brightness-3" icon="image:brightness-5" on-xp-activate="toggleTheme"></mat-icon-button>
             </mat-toolbar>
             <xp-collapse id="matDemoCodeCollapse" collapsed>
                 <xp-markdown id="matDemoCode" code="[[code]]"></xp-markdown>
