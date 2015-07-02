@@ -70,7 +70,7 @@ This element is used to wrap a material demo.
     </style>
 
     <template>
-        <mat-panel id="matDemoPanel" raised theme="{{theme}}">
+        <mat-panel id="matDemoPanel" raised>
             <mat-toolbar id="matDemoHeader" background="[[toolbarColor]]">
                 <div id="matDemoLabel">{{label}}</div>
                 <mat-icon-button id="matDemoCodeToggle" icon="action:code" on-xp-activate="toggleCode"></mat-icon-button>
@@ -79,9 +79,11 @@ This element is used to wrap a material demo.
             <xp-collapse id="matDemoCodeCollapse" collapsed>
                 <xp-markdown id="matDemoCode" code="[[code]]"></xp-markdown>
             </xp-collapse>
-            <mat-content id="matDemoBody">
-                <content id="content"></content>
-            </mat-content>
+            <mat-paper id="matDemoMain" theme="{{theme}}">
+                <mat-content id="matDemoBody">
+                    <content id="content"></content>
+                </mat-content>
+            </mat-paper>
         </mat-panel>
     </template>
 
@@ -113,7 +115,7 @@ This element is used to wrap a material demo.
              */
             toggleTheme: function () {
                 var self = this;
-                self.theme = self.$.matDemoPanel.$.matPanelWrapper.foreground;
+                self.theme = self.$.matDemoMain.foreground;
                 return self;
             },
 
@@ -166,7 +168,7 @@ This element is used to wrap a material demo.
                  * The paper's theme, used to apply the default foreground color.
                  *
                  * @attribute theme
-                 * @type String
+                 * @type string
                  * @notifies
                  */
                 theme: {
