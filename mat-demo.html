@@ -63,6 +63,7 @@ It should be used in conjunction with mat-demo-panel.
 
         :host #matDemoType {
             @apply(--mat-font-title);
+            float: left;
             opacity: 0.30;
             text-transform: capitalize;
         }
@@ -85,8 +86,8 @@ It should be used in conjunction with mat-demo-panel.
         <div id="matDemoWrapper">
             <mat-ink id="matDemoHeader">
                 <h1 id="matDemoName">{{name}}</h1>
-                <template is="dom-if" if="[[url]]" restamp><a id="matDemoHome" href$="[[url]]" on-click="_handleClick">Docs</a></template>
                 <h2 id="matDemoType">{{type}}</h2>
+                <template is="dom-if" if="[[url]]" restamp><a id="matDemoHome" href$="[[url]]" on-click="_handleClick">Docs</a></template>
             </mat-ink>
             <div id="matDemoBody">
                 <content id="content"></content>
