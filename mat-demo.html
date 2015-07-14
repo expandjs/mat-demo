@@ -37,8 +37,8 @@ It should be used in conjunction with mat-demo-panel.
             overflow: visible;
         }
 
-        :host #matDemoHeader,
-        :host #matDemoBody {
+        :host #matDemoHeader {
+            overflow: hidden;
             position: relative;
         }
 
@@ -51,11 +51,6 @@ It should be used in conjunction with mat-demo-panel.
             white-space: nowrap !important; /* override */
         }
 
-        :host #matDemoTop {
-            @apply(--layout-horizontal);
-            @apply(--layout-end);
-        }
-
         :host #matDemoHome {
             @apply(--mat-font-title);
             float: right;
@@ -66,6 +61,10 @@ It should be used in conjunction with mat-demo-panel.
             float: left;
             opacity: 0.30;
             text-transform: capitalize;
+        }
+
+        :host #matDemoBody {
+            position: relative;
         }
 
         :host ::content mat-demo-panel {
