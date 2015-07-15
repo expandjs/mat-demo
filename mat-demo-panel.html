@@ -67,7 +67,7 @@ It should be used in conjunction with mat-demo.
 
     <template>
         <mat-panel id="matDemoPanelAdaptee" raised>
-            <mat-toolbar id="matDemoPanelHeader">
+            <mat-toolbar id="matDemoPanelHeader" header>
                 <h3 id="matDemoPanelLabel">{{label}}</h3>
                 <mat-icon-button id="matDemoPanelCodeToggle" icon="action:code" on-xp-activate="toggleCode"></mat-icon-button>
                 <mat-icon-button id="matDemoPanelThemeToggle" active="[[_computeActive(theme)]]" active-icon="image:brightness-3" icon="image:brightness-5" on-xp-activate="toggleTheme"></mat-icon-button>
