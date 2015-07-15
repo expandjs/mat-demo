@@ -39,6 +39,10 @@ It should be used in conjunction with mat-demo-panel.
 
         :host #matDemoHeader {
             overflow: hidden;
+        }
+
+        :host #matDemoHeader,
+        :host #matDemoBody {
             position: relative;
         }
 
@@ -61,10 +65,6 @@ It should be used in conjunction with mat-demo-panel.
             float: left;
             opacity: 0.30;
             text-transform: capitalize;
-        }
-
-        :host #matDemoBody {
-            position: relative;
         }
 
         :host ::content mat-demo-panel {
