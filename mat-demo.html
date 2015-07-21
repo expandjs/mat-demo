@@ -37,10 +37,6 @@ It should be used in conjunction with mat-demo-panel.
             overflow: visible;
         }
 
-        :host #matDemoHeader {
-            overflow: hidden;
-        }
-
         :host #matDemoHeader,
         :host #matDemoBody {
             position: relative;
@@ -87,6 +83,7 @@ It should be used in conjunction with mat-demo-panel.
                 <h1 id="matDemoName">{{name}}</h1>
                 <h2 id="matDemoType">{{type}}</h2>
                 <template is="dom-if" if="[[url]]" restamp><a id="matDemoHome" href$="[[url]]" on-click="_handleClick">Docs</a></template>
+                <div style="clear:both"></div>
             </mat-ink>
             <div id="matDemoBody">
                 <content id="content"></content>
