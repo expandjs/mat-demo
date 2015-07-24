@@ -173,7 +173,7 @@ It should be used in conjunction with [mat-demo-panel](http://expandjs.com/eleme
 
             // HANDLER
             _handleClick: function (event) {
-                if (!event.button && this.fire('mat-demo-redirect', {firer: this, href: event.target.href}, {cancelable: true}).defaultPrevented) { event.preventDefault(); }
+                if (!event.button && this.fire('mat-demo-redirect', {firer: this, href: event.currentTarget.href}, {cancelable: true}).defaultPrevented) { event.preventDefault(); }
             }
         });
     </script>
