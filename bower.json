@@ -2,6 +2,7 @@
   "name": "mat-demo",
   "license": "BSD-3-Clause",
   "version": "0.9.6",
+  "main": "mat-demo.html",
   "description": "A custom element used to wrap Material Design demo panels",
   "homepage": "http://expandjs.com/elements/mat-demo",
   "authors": [
@@ -16,10 +17,6 @@
     "html5",
     "expandjs",
     "web-components"
-  ],
-  "main": [
-    "mat-demo-panel.html",
-    "mat-demo.html"
   ],
   "ignore": [
     "**/.*"
