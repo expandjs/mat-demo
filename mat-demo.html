@@ -47,58 +47,59 @@ It should be used in conjunction with [mat-demo-panel](http://expandjs.com/eleme
 
 <dom-module id="mat-demo">
 
-    <style>
-        :host {
-            display: block;
-            overflow: visible;
-        }
+    <template>
 
-        :host #matDemoHeader,
-        :host #matDemoBody {
-            position: relative;
-        }
+        <style>
+            :host {
+                display: block;
+                overflow: visible;
+            }
 
-        :host #matDemoName {
-            @apply(--layout-flex);
-            @apply(--mat-font-display2);
-            font-size: 44px !important /* override */;
-            overflow: hidden !important /* override */;
-            text-overflow: ellipsis !important; /* override */
-            white-space: nowrap !important; /* override */
-        }
+            :host #matDemoHeader,
+            :host #matDemoBody {
+                position: relative;
+            }
 
-        :host #matDemoHome {
-            @apply(--mat-font-title);
-            float: right;
-            margin-left: 16px;
-        }
+            :host #matDemoName {
+                @apply(--layout-flex);
+                @apply(--mat-font-display2);
+                font-size: 44px !important /* override */;
+                overflow: hidden !important /* override */;
+                text-overflow: ellipsis !important; /* override */
+                white-space: nowrap !important; /* override */
+            }
 
-        :host #matDemoHome > * {
-            display: block;
-        }
+            :host #matDemoHome {
+                @apply(--mat-font-title);
+                float: right;
+                margin-left: 16px;
+            }
 
-        :host #matDemoType {
-            @apply(--mat-font-title);
-            float: left;
-            opacity: 0.30;
-            text-transform: capitalize;
-        }
+            :host #matDemoHome > * {
+                display: block;
+            }
 
-        :host ::content mat-demo-panel {
-            margin-top: 16px;
-        }
-
-        /* TABLET */
-
-        @media (min-width: 960px) {
+            :host #matDemoType {
+                @apply(--mat-font-title);
+                float: left;
+                opacity: 0.30;
+                text-transform: capitalize;
+            }
 
             :host ::content mat-demo-panel {
-                margin-top: 24px;
+                margin-top: 16px;
             }
-        }
-    </style>
 
-    <template>
+            /* TABLET */
+
+            @media (min-width: 960px) {
+
+                :host ::content mat-demo-panel {
+                    margin-top: 24px;
+                }
+            }
+        </style>
+
         <div id="matDemoWrapper">
             <mat-ink id="matDemoHeader">
                 <h1 id="matDemoName">{{name}}</h1>
@@ -110,6 +111,7 @@ It should be used in conjunction with [mat-demo-panel](http://expandjs.com/eleme
                 <content id="content"></content>
             </div>
         </div>
+
     </template>
 
     <script>

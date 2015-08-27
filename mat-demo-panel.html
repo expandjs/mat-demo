@@ -63,31 +63,32 @@ It should be used in conjunction with [mat-demo](http://expandjs.com/elements/ma
 
 <dom-module id="mat-demo-panel">
 
-    <style>
-        :host {
-            display: block;
-            overflow: visible;
-        }
+    <template>
 
-        :host #matDemoPanelLabel {
+        <style>
+            :host {
+                display: block;
+                overflow: visible;
+            }
+
+            :host #matDemoPanelLabel {
             @apply(--layout-flex);
             @apply(--mat-font-subhead);
-            overflow: hidden;
-            padding-left: 12px;
-            text-overflow: ellipsis !important; /* override */
-            white-space: nowrap !important; /* override */
-        }
+                overflow: hidden;
+                padding-left: 12px;
+                text-overflow: ellipsis !important; /* override */
+                white-space: nowrap !important; /* override */
+            }
 
-        :host #matDemoPanelCode::shadow pre {
-            margin: 0;
-        }
+            :host #matDemoPanelCode::shadow pre {
+                margin: 0;
+            }
 
-        :host([padding-disabled]) #matDemoPanelBody {
-            padding: 0;
-        }
-    </style>
+            :host([padding-disabled]) #matDemoPanelBody {
+                padding: 0;
+            }
+        </style>
 
-    <template>
         <mat-panel id="matDemoPanelAdaptee" raised>
             <mat-toolbar id="matDemoPanelHeader" header>
                 <h3 id="matDemoPanelLabel">{{label}}</h3>
@@ -103,6 +104,7 @@ It should be used in conjunction with [mat-demo](http://expandjs.com/elements/ma
                 </mat-content>
             </mat-paper>
         </mat-panel>
+
     </template>
 
     <script>
