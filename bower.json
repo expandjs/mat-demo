@@ -33,7 +33,7 @@
     "xp-adapter-behavior": "ExpandJS/xp-adapter-behavior#0.9.8",
     "xp-collapse": "ExpandJS/xp-collapse#0.9.8",
     "xp-markdown": "ExpandJS/xp-markdown#0.9.8",
-    "polymer": "Polymer/polymer#^1.0.0",
+    "polymer": "Polymer/polymer#^1.1.0",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.0"
   }
 }
