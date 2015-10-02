@@ -32,7 +32,6 @@ It should be used in conjunction with [mat-demo](http://expandjs.com/elements/ma
 @repository https://github.com/ExpandJS/mat-demo
 
 @adapts mat-panel /bower_components/mat-panel/mat-panel.html
-@behavior xp-adapter-behavior /bower_components/xp-adapter-behavior/xp-adapter-behavior.html
 
 @dependency polymer Polymer/polymer#^1.1.0
 @dependency expandjs ExpandJS/expandjs#0.9.10
@@ -45,7 +44,6 @@ It should be used in conjunction with [mat-demo](http://expandjs.com/elements/ma
 @dependency mat-toolbar ExpandJS/mat-toolbar#0.9.10
 @dependency xp-collapse ExpandJS/xp-collapse#0.9.10
 @dependency xp-markdown ExpandJS/xp-markdown#0.9.10
-@dependency xp-adapter-behavior ExpandJS/xp-adapter-behavior#0.9.10
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -59,7 +57,6 @@ It should be used in conjunction with [mat-demo](http://expandjs.com/elements/ma
 <link rel="import" href="../mat-toolbar/mat-toolbar.html">
 <link rel="import" href="../xp-collapse/xp-collapse.html">
 <link rel="import" href="../xp-markdown/xp-markdown.html">
-<link rel="import" href="../xp-adapter-behavior/xp-adapter-behavior.html">
 
 <dom-module id="mat-demo-panel">
 
@@ -113,11 +110,6 @@ It should be used in conjunction with [mat-demo](http://expandjs.com/elements/ma
             // ELEMENT
             is: 'mat-demo-panel',
 
-            // BEHAVIORS
-            behaviors: [
-                Polymer.XPAdapterBehavior
-            ],
-
             /*********************************************************************/
 
             /**
@@ -148,6 +140,21 @@ It should be used in conjunction with [mat-demo](http://expandjs.com/elements/ma
 
             // PROPERTIES
             properties: {
+
+                /**
+                 * The adapted element.
+                 *
+                 * @attribute adaptee
+                 * @type Element
+                 * @notifies
+                 * @readonly
+                 */
+                adaptee: {
+                    notify: true,
+                    readOnly: true,
+                    type: Object,
+                    value: null
+                },
 
                 /**
                  * The demo's code.
@@ -223,7 +230,7 @@ It should be used in conjunction with [mat-demo](http://expandjs.com/elements/ma
                     spaces = XP.match(lines[0] || '', /^[ ]+/)[0] || '';
 
                 // Adapting
-                self._adapt(self.$.matDemoPanelAdaptee);
+                self._setAdaptee(self.$.matDemoPanelAdaptee);
 
                 // Cleaning
                 lines.forEach(function (line, i) { lines[i] = line.replace(spaces, ''); });

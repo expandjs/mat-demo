@@ -30,7 +30,6 @@
     "mat-panel": "ExpandJS/mat-panel#0.9.10",
     "mat-paper": "ExpandJS/mat-paper#0.9.10",
     "mat-toolbar": "ExpandJS/mat-toolbar#0.9.10",
-    "xp-adapter-behavior": "ExpandJS/xp-adapter-behavior#0.9.10",
     "xp-collapse": "ExpandJS/xp-collapse#0.9.10",
     "xp-markdown": "ExpandJS/xp-markdown#0.9.10",
     "polymer": "Polymer/polymer#^1.1.0",
