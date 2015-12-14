@@ -1,9 +1,9 @@
 {
   "name": "mat-demo",
   "license": "BSD-3-Clause",
-  "version": "0.9.11",
+  "version": "0.10.0",
   "main": "mat-demo.html",
-  "description": "A custom element used to wrap Material Design demo panels",
+  "description": "A custom element used to display a Material Design demo",
   "homepage": "http://expandjs.com/elements/mat-demo",
   "authors": [
     "Giuliano Rullo <g.rullo@expandjs.com>",
@@ -13,26 +13,24 @@
   "keywords": [
     "material design",
     "material demo",
-    "web app",
-    "html5",
     "expandjs",
+    "web app",
+    "custom elements",
     "web-components"
   ],
   "ignore": [
     "**/.*"
   ],
   "dependencies": {
-    "expandjs": "ExpandJS/expandjs#0.9.11",
-    "mat-content": "ExpandJS/mat-content#0.9.11",
-    "mat-icon-button": "ExpandJS/mat-icon-button#0.9.11",
-    "mat-icons": "ExpandJS/mat-icons#0.9.11",
-    "mat-ink": "ExpandJS/mat-ink#0.9.11",
-    "mat-panel": "ExpandJS/mat-panel#0.9.11",
-    "mat-paper": "ExpandJS/mat-paper#0.9.11",
-    "mat-toolbar": "ExpandJS/mat-toolbar#0.9.11",
-    "xp-collapse": "ExpandJS/xp-collapse#0.9.11",
-    "xp-markdown": "ExpandJS/xp-markdown#0.9.11",
-    "polymer": "Polymer/polymer#^1.1.0",
+    "expandjs": "ExpandJS/expandjs#0.10.0",
+    "mat-icon-button": "ExpandJS/mat-icon-button#0.10.0",
+    "mat-icons": "ExpandJS/mat-icons#0.10.0",
+    "mat-paper": "ExpandJS/mat-paper#0.10.0",
+    "mat-toolbar": "ExpandJS/mat-toolbar#0.10.0",
+    "mat-typography": "ExpandJS/mat-typography#0.10.0",
+    "xp-collapse-behavior": "ExpandJS/xp-collapse-behavior#0.10.0",
+    "xp-markdown": "ExpandJS/xp-markdown#0.10.0",
+    "polymer": "Polymer/polymer#^1.2.0",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.0"
   }
 }

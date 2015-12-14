@@ -7,9 +7,10 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-An element used to create a Material Design demo.
+A custom element used to display a Material Design demo.
 
-It should be used in conjunction with [mat-demo-panel](http://expandjs.com/elements/mat-demo-panel).
+It must be used in conjunction with
+[mat-demo-panel](http://expandjs.com/elements/mat-demo-panel).
 
 ```html
 <mat-demo name="my-element" type="Element" url="http://example.com/elements/my-element">
@@ -21,28 +22,36 @@ It should be used in conjunction with [mat-demo-panel](http://expandjs.com/eleme
         <my-element></my-element>
     </mat-demo-panel>
 
+    <mat-demo-panel label="Bizarre">
+        <script type="text/html">
+            <my-element mode="bizarre"></my-element>
+        </script>
+        <my-element mode="bizarre"></my-element>
+    </mat-demo-panel>
+
 </mat-demo>
 ```
 
 @element mat-demo
-@description A custom element used to wrap Material Design demo panels
-@keywords material design, material demo, web app, html5, expandjs, web-components
+@description A custom element used to display a Material Design demo
+@keywords material design, material demo, expandjs, web app, custom elements, web-components
 @group containers
+
 @homepage http://expandjs.com/elements/mat-demo
 @repository https://github.com/ExpandJS/mat-demo
 
-@dependency polymer Polymer/polymer#^1.1.0
-@dependency expandjs ExpandJS/expandjs#0.9.11
+@dependency polymer Polymer/polymer#^1.2.0
+@dependency expandjs ExpandJS/expandjs#0.10.0
 @dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-icons ExpandJS/mat-icons#0.9.11
-@dependency mat-ink ExpandJS/mat-ink#0.9.11
+@dependency mat-icons ExpandJS/mat-icons#0.10.0
+@dependency mat-typography ExpandJS/mat-typography#0.10.0
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../mat-icons/action-icons.html">
-<link rel="import" href="../mat-ink/mat-ink.html">
+<link rel="import" href="../mat-icons/mat-icons.html">
+<link rel="import" href="../mat-typography/mat-typography.html">
 <link rel="import" href="mat-demo-panel.html">
 
 <dom-module id="mat-demo">
@@ -52,63 +61,75 @@ It should be used in conjunction with [mat-demo-panel](http://expandjs.com/eleme
         <style>
             :host {
                 display: block;
-                overflow: visible;
             }
 
-            :host #matDemoHeader,
-            :host #matDemoBody {
+            :host .wrapper {
+                @apply(--layout-vertical);
+                height: 100%;
+            }
+
+            :host .header {
                 position: relative;
             }
 
-            :host #matDemoName {
-                @apply(--layout-flex);
+            :host .header:after {
+                clear: both;
+                content: "";
+                display: block;
+                height: 0;
+            }
+
+            :host .name {
                 @apply(--mat-font-display2);
-                font-size: 44px !important /* override */;
+                margin: 0;
                 overflow: hidden !important /* override */;
                 text-overflow: ellipsis !important; /* override */
                 white-space: nowrap !important; /* override */
             }
 
-            :host #matDemoHome {
-                @apply(--mat-font-title);
-                float: right;
-                margin-left: 16px;
-            }
-
-            :host #matDemoHome > * {
-                display: block;
-            }
-
-            :host #matDemoType {
+            :host .type {
                 @apply(--mat-font-title);
                 float: left;
+                margin: 0;
                 opacity: 0.30;
                 text-transform: capitalize;
             }
 
-            :host ::content mat-demo-panel {
+            :host .button {
+                float: right;
+                margin: -8px -8px -8px 8px;
+            }
+
+            :host .icon {
+                display: block;
+            }
+
+            :host .body {
+                position: relative;
+            }
+
+            :host ::content .demo-panel {
                 margin-top: 16px;
             }
 
-            /* TABLET */
+            /* DESKTOP */
 
             @media (min-width: 960px) {
 
-                :host ::content mat-demo-panel {
+                :host ::content .demo-panel {
                     margin-top: 24px;
                 }
             }
         </style>
 
-        <div id="matDemoWrapper">
-            <mat-ink id="matDemoHeader">
-                <h1 id="matDemoName">{{name}}</h1>
-                <h2 id="matDemoType">{{type}}</h2>
-                <template is="dom-if" if="[[url]]" restamp><a id="matDemoHome" href$="[[url]]" title="Docs" on-click="_handleClick"><mat-icon name="action:description"></mat-icon></a></template>
-                <div style="clear:both"></div>
-            </mat-ink>
-            <div id="matDemoBody">
-                <content id="content"></content>
+        <div class="wrapper">
+            <div class="header">
+                <h1 class="name">[[name]]</h1>
+                <h2 class="type">[[type]]</h2>
+                <mat-icon-button class="docs" href="[[url]]" title="Docs" icon="mat:description"></mat-icon-button>
+            </div>
+            <div class="body">
+                <content></content>
             </div>
         </div>
 
@@ -122,63 +143,51 @@ It should be used in conjunction with [mat-demo-panel](http://expandjs.com/eleme
 
             /*********************************************************************/
 
-            /**
-             * Fired when the home link is clicked.
-             *
-             * @event mat-redirect
-             * @param {Element} firer
-             * @param {string} href
-             * @bubbles
-             * @cancelable
-             */
-
-            /*********************************************************************/
-
             // PROPERTIES
             properties: {
 
                 /**
-                 * The subject's name.
+                 * The demo subject's name.
                  *
                  * @attribute name
                  * @type string
+                 * @default ""
                  */
                 name: {
                     reflectToAttribute: true,
                     type: String,
-                    value: null
+                    value: ''
                 },
 
                 /**
-                 * The subject's type.
+                 * The demo subject's type.
                  *
                  * @attribute type
                  * @type string
                  */
                 type: {
                     reflectToAttribute: true,
-                    type: String,
-                    value: null
+                    type: String
                 },
 
                 /**
-                 * The subject's URL.
+                 * The demo subject's url.
                  *
-                 * @attribute url
+                 * @attribute type
                  * @type string
                  */
                 url: {
-                    reflectToAttribute: true,
-                    type: String,
-                    value: null
+                    type: String
                 }
             },
 
             /*********************************************************************/
 
-            // HANDLER
-            _handleClick: function (event) {
-                if (!event.button && this.fire('mat-redirect', {firer: this, href: event.currentTarget.href}, {cancelable: true}).defaultPrevented) { event.preventDefault(); }
+            // LISTENER
+            created: function () {
+
+                // Classifying
+                this.classList.add('demo');
             }
         });
     </script>
